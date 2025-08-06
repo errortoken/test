@@ -85,10 +85,10 @@
 
   <script>
     function calculate() {
-      const total = parseInt(document.getElementById("totalJobs").value);
-      const accepted = parseInt(document.getElementById("acceptedJobs").value);
+      const total = parseFloat(document.getElementById("totalJobs").value);
+      const accepted = parseFloat(document.getElementById("acceptedJobs").value);
       const target = parseFloat(document.getElementById("targetRate").value);
-      const rainyMissed = parseInt(document.getElementById("rainyMissedJobs").value) || 0;
+      const rainyMissed = parseFloat(document.getElementById("rainyMissedJobs").value) || 0;
       const excludeRain = document.getElementById("excludeRain").checked;
 
       if (
@@ -111,7 +111,8 @@
       const currentRate = (accepted / adjustedTotal) * 100;
 
       if (currentRate >= target) {
-        document.getElementById("result").innerText = `อัตราการรับงานของคุณคือ ${currentRate.toFixed(2)}% ซึ่งมากกว่าหรือเท่ากับเป้าหมายแล้ว`;
+        document.getElementById("result").innerText =
+          `อัตราการรับงานของคุณคือ ${currentRate.toFixed(2)}% ซึ่งมากกว่าหรือเท่ากับเป้าหมายแล้ว`;
         return;
       }
 
@@ -120,7 +121,7 @@
       const newAccepted = accepted + requiredAdditional;
       const newRate = (newAccepted / newTotal) * 100;
 
-      document.getElementById("result").innerText = 
+      document.getElementById("result").innerText =
         `คุณต้องรับงานเพิ่มอีกอย่างน้อย ${requiredAdditional} งาน\nเพื่อให้ได้อัตรารับงานประมาณ ${newRate.toFixed(2)}%`;
     }
   </script>
